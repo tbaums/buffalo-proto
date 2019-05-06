@@ -1,0 +1,41 @@
+{
+    "apiVersion": "V2",
+    "name": "edgelb-proxy-pool",
+    "count": 1,
+    "autoCertificate": true,
+    "haproxy": {
+        "frontends": [
+            {
+                "bindPort": 6001,
+                "protocol": "HTTPS",
+                "certificates": [
+                    "$AUTOCERT"
+                ],
+                "linkBackend": {
+                    "defaultBackend": "team1-test-cluster"
+                }
+            }
+        ],
+        "backends": [
+
+            {
+                "name": "team1-test-cluster",
+                "protocol": "HTTPS",
+                "services": [
+                    {
+                        "mesos": {
+                            "frameworkName": "test/team1-test-cluster",
+                            "taskNamePattern": "kube-control-plane"
+                        },
+                        "endpoint": {
+                            "portName": "apiserver"
+                        }
+                    }
+                ]
+            }
+        ],
+        "stats": {
+            "bindPort": 6090
+        }
+    }
+}
