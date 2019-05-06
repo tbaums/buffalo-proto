@@ -2,3 +2,6 @@
 terraform*
 .terraform.tfstate.lock.info
 plan.out
+k8s-permissions.sh.backup
+private-key.pem
+public-key.pem
