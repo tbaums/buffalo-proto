@@ -1,0 +1,18 @@
+    
+{
+  "service": {
+    "sleep": 1000,
+    "service_account": "team1-test-cluster",
+    "service_account_secret": "test/team1-test-cluster/sa",
+    "virtual_network_name": "dcos",
+    "log_level": "INFO",
+    "name": "test/team1-test-cluster"
+  },
+  "kubernetes": {
+    "authorization_mode": "AlwaysAllow",
+    "high_availability": false,
+    "control_plane_placement": "[[\"hostname\", \"UNIQUE\"]]",
+ "private_node_count": 1,
+ "public_node_count": 0
+}
+} 

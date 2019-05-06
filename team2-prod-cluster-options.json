@@ -1,0 +1,18 @@
+    
+{
+  "service": {
+    "sleep": 1000,
+    "service_account": "team2-prod-cluster",
+    "service_account_secret": "prod/team2-prod-cluster/sa",
+    "virtual_network_name": "dcos",
+    "log_level": "INFO",
+    "name": "prod/team2-prod-cluster"
+  },
+  "kubernetes": {
+    "authorization_mode": "AlwaysAllow",
+    "high_availability": true,
+    "control_plane_placement": "[[\"hostname\", \"UNIQUE\"]]",
+ "private_node_count": 3,
+ "public_node_count": 0
+}
+} 
