@@ -6,7 +6,6 @@ module "dcos" {
 #  dcos_instance_os    = "coreos_1855.5.0"
   dcos_instance_os    = "centos_7.5"
   cluster_name        = "buffalo-proto"
-  custom_dcos_download_path = "http://downloads.mesosphere.com/dcos-enterprise/stable/1.13.0-beta/dcos_generate_config.ee.sh"
   ssh_public_key_file = "~/.ssh/ccm-default.pub"
   admin_ips           = ["0.0.0.0/0"]
   num_masters        = "1"
@@ -17,7 +16,7 @@ module "dcos" {
   private_agents_instance_type = "c5.4xlarge"
   masters_instance_type = "m4.xlarge"
   availability_zones = ["us-east-1a","us-east-1b","us-east-1c"]
-  dcos_version = "1.13.0-beta"
+  dcos_version = "1.13.0"
   #dcos_variant = "open"
   subnet_range        = "172.16.0.0/16"
   dcos_variant = "ee"
@@ -48,7 +47,7 @@ module "dcos" {
 #    - "169.254.169.253"
 #  EOF
 
-  public_agents_additional_ports = ["6000", "6001", "6002", "6003", "6445", "6444", "6443", "7443", "8080", "8085", "10080", "11080", "12080", "13080", "14080", "3000", "9090", "9093", "9091", "6090", "30443", "30080"]
+  public_agents_additional_ports = ["10101","6000", "6001", "6002", "6003", "6445", "6444", "6443", "7443", "8080", "8085", "10080", "11080", "12080", "13080", "14080", "3000", "9090", "9093", "9091", "6090", "30443", "30080"]
 }
 output "masters-ips" {
   value = "${module.dcos.masters-ips}"
