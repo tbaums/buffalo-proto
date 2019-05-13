@@ -14,8 +14,8 @@
   "mem": 2048,
   "env": {
     "GITLAB_SERVICE_NAME": "gitlab.marathon.mesos",
-    "REGISTRATION_TOKEN": "jXRhP8xWSQjfqPweE7Ye",
-    "GITLAB_SERVICE_URL": "http://3.208.94.186:10101/ci",
+    "REGISTRATION_TOKEN": "pCvY4GhBeJJ_cmHtshGp",
+    "GITLAB_SERVICE_URL": "http://52.3.229.15:10101/ci",
     "RUNNER_EXECUTOR": "shell",
     "RUNNER_TAG_LIST": "shell,build-as-docker",
     "RUNNER_CONCURRENT_BUILDS": "4"

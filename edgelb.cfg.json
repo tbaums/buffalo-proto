@@ -6,6 +6,13 @@
     "haproxy": {
         "frontends": [
             {
+                "bindPort": 80,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "gitlab"
+                }
+            },
+            {
                 "bindPort": 10101,
                 "protocol": "HTTP",
                 "linkBackend": {
@@ -14,7 +21,10 @@
             },
             {
                 "bindPort": 10102,
-                "protocol": "HTTP",
+                "protocol": "HTTPS",
+                "certificates": [
+                    "$AUTOCERT"
+                ],
                 "linkBackend": {
                     "defaultBackend": "gitlab-registry"
                 }
@@ -66,6 +76,8 @@
                             "taskNamePattern": "gitlab"
                         },
                         "endpoint": {
+                            "type": "ADDRESS",
+                            "address": "gitlab-registry.marathon.l4lb.thisdcos.directory",
                             "port": 50000
                         }
                     }

@@ -5,4 +5,4 @@ plan.out
 k8s-permissions.sh.backup
 private-key.pem
 public-key.pem
-public-key.pem
+tmp/*
