@@ -6,6 +6,20 @@
     "haproxy": {
         "frontends": [
             {
+                "bindPort": 10101,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "gitlab"
+                }
+            },
+            {
+                "bindPort": 10102,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "gitlab-registry"
+                }
+            },
+            {
                 "bindPort": 6001,
                 "protocol": "HTTPS",
                 "certificates": [
@@ -14,10 +28,49 @@
                 "linkBackend": {
                     "defaultBackend": "team1-test-cluster"
                 }
+            },
+            {
+                "bindPort": 6002,
+                "protocol": "HTTPS",
+                "certificates": [
+                    "$AUTOCERT"
+                ],
+                "linkBackend": {
+                    "defaultBackend": "team2-prod-cluster"
+                }
             }
         ],
         "backends": [
-
+            {
+                "name": "gitlab",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "mesos": {
+                            "frameworkName": "marathon",
+                            "taskNamePattern": "gitlab"
+                        },
+                        "endpoint": {
+                            "portName": "web"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "gitlab-registry",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "mesos": {
+                            "frameworkName": "marathon",
+                            "taskNamePattern": "gitlab"
+                        },
+                        "endpoint": {
+                            "port": 50000
+                        }
+                    }
+                ]
+            },
             {
                 "name": "team1-test-cluster",
                 "protocol": "HTTPS",
@@ -25,6 +78,22 @@
                     {
                         "mesos": {
                             "frameworkName": "test/team1-test-cluster",
+                            "taskNamePattern": "kube-control-plane"
+                        },
+                        "endpoint": {
+                            "portName": "apiserver"
+                        }
+                    }
+                ]
+            },
+      
+            {
+                "name": "team2-prod-cluster",
+                "protocol": "HTTPS",
+                "services": [
+                    {
+                        "mesos": {
+                            "frameworkName": "prod/team2-prod-cluster",
                             "taskNamePattern": "kube-control-plane"
                         },
                         "endpoint": {
