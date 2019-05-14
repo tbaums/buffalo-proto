@@ -21,10 +21,7 @@
             },
             {
                 "bindPort": 10102,
-                "protocol": "HTTPS",
-                "certificates": [
-                    "$AUTOCERT"
-                ],
+                "protocol": "HTTP",
                 "linkBackend": {
                     "defaultBackend": "gitlab-registry"
                 }

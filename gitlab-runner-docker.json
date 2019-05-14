@@ -1,0 +1,38 @@
+{
+    "id": "gitlab-runner-docker",
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "mesosphere/dcos-gitlab-runner-service:v9.1.1",
+        "network": "HOST",
+        "forcePullImage": true,
+        "privileged": true
+      }
+    },
+    "instances": 1,
+    "cpus": 1,
+    "mem": 2048,
+    "env": {
+      "GITLAB_SERVICE_NAME": "gitlab.marathon.mesos",
+      "REGISTRATION_TOKEN": "6aaR4V1xGyxqVEu9j7MW",
+      "GITLAB_SERVICE_URL": "http://34.200.222.37/ci",
+      "RUNNER_EXECUTOR": "docker",
+      "RUNNER_TAG_LIST": "docker,build-in-docker",
+      "RUNNER_CONCURRENT_BUILDS": "4",
+      "DOCKER_IMAGE": "docker:stable"
+
+    },
+    "taskKillGracePeriodSeconds": 15,
+    "healthChecks": [
+       {
+          "path": "/metrics",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "gracePeriodSeconds": 300,
+          "intervalSeconds": 60,
+          "timeoutSeconds": 20,
+          "maxConsecutiveFailures": 3,
+          "ignoreHttp1xx": false
+        }
+    ]
+  }

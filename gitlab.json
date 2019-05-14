@@ -43,7 +43,8 @@
         "servicePort": 50000,
         "labels": {
           "VIP_0": "/gitlab-registry:50000"
-        }
+        },
+        "name": "registry"
       }
     ],
     "type": "DOCKER",
@@ -79,7 +80,7 @@
   "cpus": 1,
   "disk": 0,
   "env": {
-    "GITLAB_OMNIBUS_CONFIG": "external_url 'http://52.3.229.15/'; registry_external_url 'http://52.3.229.15:50000/'; gitlab_rails['gitlab_ssh_host'] = '52.3.229.15:22222';  unicorn['worker_processes'] = 2; manage_accounts['enable'] = true; user['home'] = '/gitlab-data/home'; git_data_dir '/gitlab-data/git-data'; gitlab_rails['shared_path'] = '/gitlab-data/shared'; gitlab_rails['uploads_directory'] = '/gitlab-data/uploads'; gitlab_ci['builds_directory'] = '/gitlab-data/builds';"
+    "GITLAB_OMNIBUS_CONFIG": "external_url 'http://34.200.222.37/'; registry_external_url 'http://34.200.222.37:50000/'; gitlab_rails['gitlab_ssh_host'] = '34.200.222.37:22222';  unicorn['worker_processes'] = 2; manage_accounts['enable'] = true; user['home'] = '/gitlab-data/home'; git_data_dir '/gitlab-data/git-data'; gitlab_rails['shared_path'] = '/gitlab-data/shared'; gitlab_rails['uploads_directory'] = '/gitlab-data/uploads'; gitlab_ci['builds_directory'] = '/gitlab-data/builds';"
   },
   "healthChecks": [
     {

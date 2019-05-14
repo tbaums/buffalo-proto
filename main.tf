@@ -9,7 +9,7 @@ module "dcos" {
   ssh_public_key_file = "~/.ssh/ccm-default.pub"
   admin_ips           = ["0.0.0.0/0"]
   num_masters        = "1"
-  num_private_agents = "6"
+  num_private_agents = "9"
   num_public_agents  = "3"
   bootstrap_instance_type = "t2.medium"
   public_agents_instance_type = "c5.xlarge"
